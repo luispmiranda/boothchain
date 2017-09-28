@@ -1,0 +1,13 @@
+.DS_Store
+.nide
+.project
+node_modules
+logs
+log
+*.iml
+*.log
+.idea
+target
+.vagrant
+*.rpm
+*.swp
