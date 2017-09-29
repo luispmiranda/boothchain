@@ -5,8 +5,36 @@
             Boothchain
         </title>
     </head>
+        <script>
+            function printImage() {
+                return fetch('/api/print', {
+                    method: 'POST',
+                    body: {
+                        z1: 1, // document.getElementById('z1').value,
+                        z2: 2, // document.getElementById('z2').value,
+                        data: new FormData()
+                    }
+                }).then((response) => {
+                    return response;
+                });
+            }
+        </script>
     </head>
     <body>
         <h1>Boothchain</h1>
+        <!-- Multipart form -->
+        <form class="img-upld" enctype="multipart/form-data" action="/api/print" method="post" >
+            <input id="img-upld" name="img-upld" type="file" accept="image/*" >
+            <input id="z1" name="z1" type="hidden" value="0">
+            <input id="z2" name="z2" type="hidden" value="1">
+            <input type="submit" value="Print"/>
+         </form>
+
+         <!-- Buttons -->
+         <!-- <button id="upload">Upload</button> -->
+         <!-- <button id="print" onclick="printImage()">Print</button> -->
+         <footer>
+             pixelscamp 2017
+         </footer>
     </body>
 </html>

@@ -2,6 +2,7 @@
 .nide
 .project
 node_modules
+uploads
 logs
 log
 *.iml
