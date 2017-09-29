@@ -12,6 +12,18 @@ boothchain.imgUpload.init = function () {
         ev.preventDefault();
     });
 
+    // When clicking on the pay with exposure
+    $('#pay-with-exposure').on('click', function (event) {
+        $.ajax({
+            url: '/api/print',
+            type: 'POST',
+            data: new FormData($('#image-form')[0]),
+            processData: false,
+            contentType: false
+        });
+        event.preventDefault();        
+    });
+
     // Event functions
     $('#img-upld').change(function (ev) {
         // Get a reference to the taken picture or chosen file

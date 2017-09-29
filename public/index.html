@@ -40,11 +40,11 @@
                     </div>
 
                     <!-- Multipart form -->
-                    <form class="img-upld" enctype="multipart/form-data" action="/api/print" method="post" >
-                        <input id="img-upld" name="img-upld" type="file" accept="image/*" >
+                    <form id="image-form" class="img-upld" enctype="multipart/form-data" action="/api/print" method="post" >
+                        <input style="display: none" id="img-upld" name="img-upld" type="file" accept="image/*" >
                         <input id="z1" name="z1" type="hidden" value="0">
                         <input id="z2" name="z2" type="hidden" value="1">
-                        <input type="submit" value="Print"/>
+                        <!-- <input id="submit" type="submit" value="Print"/> -->
                     </form>
                 </section>
             </div>
