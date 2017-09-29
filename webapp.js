@@ -31,8 +31,35 @@ app.post('/api/print', upload.single('img-upld'), function (req, res) {
     src.on('end', function() { 
         console.info('File copied from ' + tmpPath + ' to ' + targetPath);
         
+
+        /**********************
+         * Send data to RabbitMQ
+         **********************/
+        // const image = {
+        //     filepath: targetPath,
+        //     contrast: 1,
+        //     brightness: 1
+        // };
+
+
+        // rabbitMQ.send(image);
+        var amqp = require('amqplib/callback_api');
+        
+        amqp.connect('amqp://127.0.0.1', function(err, conn) {
+            conn.createChannel(function(err, ch) {
+              var q = 'hello';
+          
+              ch.assertQueue(q, {durable: false});
+              // Note: on Node 6 Buffer.from(msg) should be used
+              ch.sendToQueue(q, new Buffer('Hello World!'));
+              console.log(" [x] Sent 'Hello World!'");
+            });
+          });
+        
+
+
         // TODO: Fix this as it may be printing all black images
-        printAPI.generateImages(req.file.originalname, 0.5, 0.5);
+        // printAPI.generateImages(req.file.originalname, 0.5, 0.5);
     });
     src.on('error', function(err) {
         console.error('An error occurred processing file streams');
