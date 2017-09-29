@@ -43,23 +43,15 @@ app.post('/api/print', upload.single('img-upld'), function (req, res) {
             brightness: 0.5
         };
 
-        function buildImageString(image) {
-            const file = 'file=' + image.filepath;
-            const contrast = 'contrast=' + image.contrast;
-            const brightness = 'brightness=' + image.brightness;
-
-            return [file, contrast, brightness].join(' ');
-        }
-
         var amqp = require('amqplib/callback_api');
         
         amqp.connect('amqp://127.0.0.1', function(err, conn) {
             conn.createChannel(function(err, ch) {
+                
               var q = 'queue';
-              const messageStr = buildImageString(image);
-          
+
               ch.assertQueue(q, {durable: false});
-              ch.sendToQueue(q, new Buffer(messageStr));
+              ch.sendToQueue(q, new Buffer(JSON.stringify(image)));
               console.log(" [x] Sent 'Hello World!'");
             });
           });

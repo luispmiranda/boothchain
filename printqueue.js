@@ -14,19 +14,17 @@ amqp.connect('amqp://127.0.0.1', function(err, conn) {
     console.log('Error opening RabbitMQ connection', err);
   }
   conn.createChannel(function(err, ch) {
+    if (err) {
+      console.err('Error creating RabbitMQ channel');
+    }
     var q = 'queue';
     ch.assertQueue(q, {durable: false});
     console.log(" [*] Waiting for messages in %s. To exit press CTRL+C", q);
 
     ch.consume(q, function(msg) {
-      // var data = JSON.parse
-      var data = {
-        url: 'uploads/nodebot.png',
-        contrast: 100,
-        brightness: 50
-      };
-
-      printFull(data.url, data.contrast, data.brightness, data.opts, console.log);
+      var data = JSON.parse(msg.content.toString());
+      
+      printFull(data.filepath, data.contrast, data.brightness, data.opts, console.log);
 
     }, {noAck: true});
   });
