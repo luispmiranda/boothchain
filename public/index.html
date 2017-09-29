@@ -4,6 +4,91 @@
         <title>
             Boothchain
         </title>
+        <style>
+            body {
+                background: #e72b35;
+                font-family: Futura;
+                margin: 0;
+            }
+
+            .logo {
+                background-image: url('logo.png');
+            }
+            /* Wrapper */
+            .wrapper {
+                display: flex;
+                flex-direction: column;
+                flex: 1 100%;
+                min-height: 100vh;
+                position: relative;
+                justify-content: space-around;
+            }
+
+            .wrapper header {
+                margin: 10px 10px;
+                /*background-color: blue;*/
+                flex: 0 1 auto; 
+            }
+            .wrapper footer {
+                /*background-color: green;*/
+                flex: 0 0 auto; 
+            }
+
+            .wrapper .main {
+                flex: 1;
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+            }
+
+            /* Main Section*/
+            .welcome-title {
+                font-size: 40px;
+                font-weight: bold;
+                line-height: 1.45;
+                text-align: left;
+                color: #ffffff;
+            }
+
+            .welcome-description {
+                width: 480px;
+                height: 102px;
+                opacity: 0.8;
+                font-size: 24px;
+                line-height: 1.42;
+                text-align: left;
+                color: #ffffff;
+            }
+
+            .button-container {
+                width: 520px;
+                height: 136px;
+                border-radius: 12px;
+                background-color: #fccd38;
+                box-shadow: 4px 4px 0 0 #ae282f;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .button-container .icon {
+
+            }
+
+            .button-container .button {
+                width: 216px;
+                height: 40px;
+                font-family: Futura;
+                font-size: 24px;
+                font-weight: bold;
+                line-height: 1.67;
+                letter-spacing: 3px;
+                text-align: center;
+                color: #e72b35;
+                letter-spacing: normal;
+            }
+            
+        </style>
     </head>
         <script>
             function printImage() {
@@ -21,20 +106,36 @@
         </script>
     </head>
     <body>
-        <h1>Boothchain</h1>
-        <!-- Multipart form -->
-        <form class="img-upld" enctype="multipart/form-data" action="/api/print" method="post" >
-            <input id="img-upld" name="img-upld" type="file" accept="image/*" >
-            <input id="z1" name="z1" type="hidden" value="0">
-            <input id="z2" name="z2" type="hidden" value="1">
-            <input type="submit" value="Print"/>
-         </form>
-
-         <!-- Buttons -->
-         <!-- <button id="upload">Upload</button> -->
-         <!-- <button id="print" onclick="printImage()">Print</button> -->
-         <footer>
-             pixelscamp 2017
-         </footer>
+        <div class="wrapper">
+            <header>
+                <div class="logo"></div>
+                <h1>Boothchain</h1>
+                <section></section>
+            </header>
+            <div class="main">
+                <section class="welcome">
+                    <div class="welcome-title">Welcome fellow Camper!</div>
+                    <div class="welcome-description">Boothchain is a photo-booth that allows you to print photos on thermal paper and pay for that with EXPOSURE! Exciting, right?</div>
+                </section>
+                <section class="button">
+                    <div class="button-container">
+                        <div class="button">Add a Photo</div>
+                    </div>
+                    <!-- Multipart form -->
+                    <form class="img-upld" enctype="multipart/form-data" action="/api/print" method="post" >
+                        <input id="img-upld" name="img-upld" type="file" accept="image/*" >
+                        <input id="z1" name="z1" type="hidden" value="0">
+                        <input id="z2" name="z2" type="hidden" value="1">
+                        <input type="submit" value="Print"/>
+                    </form>
+                </section>
+            </div>
+            <!-- Buttons -->
+            <!-- <button id="upload">Upload</button> -->
+            <!-- <button id="print" onclick="printImage()">Print</button> -->
+            <footer>
+                Project developed for Pixels Camp 2017
+            </footer>
+        </div>
     </body>
 </html>
