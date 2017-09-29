@@ -8,6 +8,9 @@ var glob       = require('glob');
 var moment     = require('moment');
 
 amqp.connect('amqp://127.0.0.1', function(err, conn) {
+  if(err){
+    console.log('Error opening RabbitMQ connection', err);
+  }
   conn.createChannel(function(err, ch) {
     var q = 'queue';
     ch.assertQueue(q, {durable: false});
