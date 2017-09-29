@@ -82,6 +82,7 @@ body {
     padding: 10px;
     align-items: center;
     justify-content: center;
+    filter: grayscale(100%);
 }
 
 #step-2 {

@@ -36,6 +36,11 @@ boothchain.imgUpload.init = function () {
             boothchain.imgUpload.preview(ev, image);
         }
     });
+
+    $('#input-contrast').change(function(ev){
+        var val = $(this).val();
+        boothchain.imgUpload.setFilters(ev);
+    });
 }
 // Preview uploaded image on the left side container
 boothchain.imgUpload.preview = function(ev, file, previewID, index, jqXHR){
@@ -60,6 +65,16 @@ boothchain.imgUpload.preview = function(ev, file, previewID, index, jqXHR){
     });
 };
 
+boothchain.imgUpload.setFilters = function () {
+    const elem = $(this);
+    const contrast = $('#input-contrast').val();
+    var c = +contrast-0.2;
+
+    const filter = 'grayscale(100%) contrast(10) brightness(' + c + ')';
+    var img = $('#img-preview');
+    img.css('-webkit-filter', filter);
+    img.css('filter', filter);
+};
 
 (function() {
     $(document).ready(function(){

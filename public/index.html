@@ -24,7 +24,8 @@
                     </section>
                     <div class="preview-container" id="preview-container">
                         <div class="frame">
-                            <img class="preview" id="img-preview"/>    
+                            <img class="preview" id="img-preview"/>   
+                            <input id="input-contrast" value="0" type="range" min="0" max="10">
                         </div>
                         <!-- Add Sliders -->
                     </div>
@@ -42,7 +43,8 @@
                     <!-- Multipart form -->
                     <form id="image-form" class="img-upld" enctype="multipart/form-data" action="/api/print" method="post" >
                         <input style="display: none" id="img-upld" name="img-upld" type="file" accept="image/*" >
-                        <input id="z1" name="z1" type="hidden" value="0">
+
+                        <input id="z1" name="z1" type="hidden" value="0" >
                         <input id="z2" name="z2" type="hidden" value="1">
                         <!-- <input id="submit" type="submit" value="Print"/> -->
                     </form>
