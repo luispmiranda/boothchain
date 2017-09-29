@@ -7,6 +7,8 @@ var fs         = require('fs.extra');
 var glob       = require('glob');
 var moment     = require('moment');
 
+var convert = require('./lib/converter/imagemagick-converter').convert;
+
 amqp.connect('amqp://127.0.0.1', function(err, conn) {
   if(err){
     console.log('Error opening RabbitMQ connection', err);
@@ -19,7 +21,7 @@ amqp.connect('amqp://127.0.0.1', function(err, conn) {
     ch.consume(q, function(msg) {
       // var data = JSON.parse
       var data = {
-        url: 'https://subvisual.co/images/team/roberto-machado-1696a4b6.jpg',
+        url: 'uploads/nodebot.png',
         contrast: 100,
         brightness: 50
       };
@@ -33,7 +35,7 @@ amqp.connect('amqp://127.0.0.1', function(err, conn) {
 function printFull(tmpPath, contrast, brightness, opts, callback){
   var z1 = ((+contrast-1)/(2*+brightness*+contrast));
   var z2 = ((+contrast+1)/(2*+brightness*+contrast));
-  var z2   = +req.POSTargs['z2'];
+
   var imParams = [
       '-resize'    , '384x2000',
       '-level'     , (z1*100)+'%,'+(z2*100)+'%',
@@ -41,7 +43,7 @@ function printFull(tmpPath, contrast, brightness, opts, callback){
   ];
 
   var timestamp = new Date().getTime();
-  var tmpPath      = file.path;
+
   var originalPath = paths.originals+'/original_'+timestamp;
   var finalPaths   = paths.finals+'/final_'+timestamp;
 
