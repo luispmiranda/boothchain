@@ -7,9 +7,9 @@ const TARGET_IMAGES_PATH = 'uploads';
 const CONFIG = require('./lib/config');
 
 const multer = require('multer'); // v1.0.5
-const upload = multer({dest: CONFIG.TARGET_IMAGES_PATH + '/'}); // for parsing multipart/form-data
-const printAPI = require('./lib/print-api');
+const printAPI = require('./lib/converter/');
 
+const upload = multer({dest: CONFIG.TARGET_IMAGES_PATH + '/'}); // for parsing multipart/form-data
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
@@ -29,17 +29,19 @@ app.post('/api/print', upload.single('img-upld'), function (req, res) {
     
     src.pipe(dest);
     src.on('end', function() { 
-        //res.render('complete');
+        console.info('File copied from ' + tmpPath + ' to ' + targetPath);
+        
+        // TODO: Fix this as it may be printing all black images
+        printAPI.generateImages(req.file.originalname, 0.5, 0.5);
     });
-    src.on('error', function(err) { 
-        // res.render('error');
+    src.on('error', function(err) {
+        console.error('An error occurred processing file streams');
     });
 
-    printAPI.print(req.file.originalname, 1, 2);
     // Handle this properly, return a json with a status code.
     res.json({
         response: 'Hello World'
-    });    
+    });
 });
 
 app.listen(3000, function () {
