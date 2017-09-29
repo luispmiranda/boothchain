@@ -7,7 +7,7 @@ const TARGET_IMAGES_PATH = 'uploads';
 const CONFIG = require('./lib/config');
 
 const multer = require('multer'); // v1.0.5
-const printAPI = require('./lib/converter/');
+
 
 const upload = multer({dest: CONFIG.TARGET_IMAGES_PATH + '/'}); // for parsing multipart/form-data
 app.use(bodyParser.json()); // for parsing application/json
@@ -35,31 +35,32 @@ app.post('/api/print', upload.single('img-upld'), function (req, res) {
         /**********************
          * Send data to RabbitMQ
          **********************/
-        // const image = {
-        //     filepath: targetPath,
-        //     contrast: 1,
-        //     brightness: 1
-        // };
+        const image = {
+            filepath: targetPath,
+            contrast: 0.5,
+            brightness: 0.5
+        };
 
+        function buildImageString(image) {
+            const file = 'file=' + image.filepath;
+            const contrast = 'contrast=' + image.contrast;
+            const brightness = 'brightness=' + image.brightness;
 
-        // rabbitMQ.send(image);
+            return [file, contrast, brightness].join(' ');
+        }
+
         var amqp = require('amqplib/callback_api');
         
         amqp.connect('amqp://127.0.0.1', function(err, conn) {
             conn.createChannel(function(err, ch) {
-              var q = 'hello';
+              var q = 'queue';
+              const messageStr = buildImageString(image);
           
               ch.assertQueue(q, {durable: false});
-              // Note: on Node 6 Buffer.from(msg) should be used
-              ch.sendToQueue(q, new Buffer('Hello World!'));
+              ch.sendToQueue(q, new Buffer(messageStr));
               console.log(" [x] Sent 'Hello World!'");
             });
           });
-        
-
-
-        // TODO: Fix this as it may be printing all black images
-        // printAPI.generateImages(req.file.originalname, 0.5, 0.5);
     });
     src.on('error', function(err) {
         console.error('An error occurred processing file streams');
