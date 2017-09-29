@@ -51,8 +51,27 @@ body {
     height: 320px;
     border-radius: 12px;
     background-color: #ffffff;
-    background-color: var(--white);
     box-shadow: 4px 4px 0 0 #ae282f;
+    display: flex;
+}
+
+.wrapper .preview-container .preview {
+    width: 288px;
+    height: 288px;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+#step-2 {
+    width: 500px;
+    height: 80px;
+    font-family: Futura;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1.67;
+    text-align: left;
+    color: #ffffff;
     display: none;
 }
 

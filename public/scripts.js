@@ -21,7 +21,7 @@ boothchain.imgUpload.init = function () {
             image = files[0];
         }
         if (image) {
-            boothchain.imgUpload.preview(ev, file);
+            boothchain.imgUpload.preview(ev, image);
         }
     });
 }
@@ -36,6 +36,12 @@ boothchain.imgUpload.preview = function(ev, file, previewID, index, jqXHR){
         
         // Hide add-photo button
         $('#add-photo').hide();
+
+        // Hide welcome menu
+        $('#welcome-section').hide();
+
+        // Show step 2
+        $('#step-2').show();
     });
 };
 
