@@ -5,8 +5,13 @@ body {
 }
 
 .logo {
-    background-image: url('logo.png');
+    height: 120px;
 }
+
+.pixels-logo {
+    display: inline;
+}
+
 /* Wrapper */
 .wrapper {
     display: flex;
@@ -18,7 +23,7 @@ body {
 }
 
 .wrapper header {
-    margin: 10px 10px;
+    margin: 40px;
     /*background-color: blue;*/
     flex: 0 1 auto; 
 }
@@ -28,8 +33,7 @@ body {
 }
 
 .wrapper footer .container {
-    width: 281px;
-    height: 68px;
+    padding: 40px;
     opacity: 0.8;
     font-family: Futura;
     font-size: 24px;
@@ -37,6 +41,13 @@ body {
     text-align: left;
     color: #ffffff;
     margin: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.wrapper footer .container .description {
+    width: 281px;
+    padding-left: 25px;
 }
 
 .wrapper .main {
@@ -44,6 +55,10 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-around;
+}
+
+#preview-container {
+    display: none;
 }
 
 .wrapper .preview-container {
@@ -66,15 +81,17 @@ body {
 #step-2 {
     width: 500px;
     height: 80px;
+    display: none;
+}
+
+#step-2 .headline {
     font-family: Futura;
     font-size: 24px;
     font-weight: bold;
     line-height: 1.67;
     text-align: left;
     color: #ffffff;
-    display: none;
 }
-
 
 /* Main Section*/
 .welcome-title {
@@ -107,9 +124,11 @@ body {
 }
 
 .button-container .button {
-    width: 216px;
+    /*width: 216px;*/
+    margin-left: 10px;
     height: 40px;
     font-family: Futura;
+    text-transform: uppercase;
     font-size: 24px;
     font-weight: bold;
     line-height: 1.67;

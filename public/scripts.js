@@ -42,6 +42,9 @@ boothchain.imgUpload.preview = function(ev, file, previewID, index, jqXHR){
 
         // Show step 2
         $('#step-2').show();
+
+        // Show pay with exposure button
+        $('#pay-with-exposure').show();
     });
 };
 

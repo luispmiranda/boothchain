@@ -9,9 +9,7 @@
     <body>
         <div class="wrapper">
             <header>
-                <div class="logo"></div>
-                <h1>Boothchain</h1>
-                <section></section>
+                <img class="logo" src="logo-white.png"/>
             </header>
             <div class="main">
                 <section class="left-container">
@@ -24,7 +22,7 @@
                                 Great! Now, adjust the brightness to your liking and proceed to payment
                         </div>
                     </section>
-                    <div class="preview-container">
+                    <div class="preview-container" id="preview-container">
                         <img class="preview" id="img-preview"/>
                         <!-- Add Sliders -->
                     </div>
@@ -34,6 +32,11 @@
                         <img src="shape.svg"/>
                         <div class="button">Add a Photo</div>
                     </div>
+                    <div class="button-container" id="pay-with-exposure" style="display:none">
+                        <img src="group-3.svg"/>
+                        <div class="button">Pay with Exposure</div>
+                    </div>
+
                     <!-- Multipart form -->
                     <form class="img-upld" enctype="multipart/form-data" action="/api/print" method="post" >
                         <input id="img-upld" name="img-upld" type="file" accept="image/*" >
@@ -48,7 +51,10 @@
             <!-- <button id="print" onclick="printImage()">Print</button> -->
             <footer>
                 <div class="container">
-                    Project developed for Pixels Camp 2017
+                    <img class="pixels-logo" src="pixels-white.png"/>
+                    <div class="description">
+                        Project developed for Pixels Camp 2017
+                    </div>
                 </div>
             </footer>
         </div>
