@@ -32,9 +32,6 @@ function printFull(tmpPath, z1, z2, opts, callback){
   //var z1 = ((+contrast-1)/(2*+brightness*+contrast));
   //var z2 = ((+contrast+1)/(2*+brightness*+contrast));
 
-  var z1 = 0.49;
-  var z2 = 0.61;
-
   var imParams = [
       '-resize'    , '384x2000',
       '-level'     , (z1*100)+'%,'+(z2*100)+'%',
