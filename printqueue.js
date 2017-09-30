@@ -24,15 +24,15 @@ amqp.connect('amqp://127.0.0.1', function(err, conn) {
     ch.consume(q, function(msg) {
       var data = JSON.parse(msg.content.toString());
       
-      printFull(data.filepath, data.contrast, data.brightness, data.opts, console.log);
+      printFull(data.filepath, data.z1, data.z2, data.opts, console.log);
 
     }, {noAck: true});
   });
 });
 
-function printFull(tmpPath, contrast, brightness, opts, callback){
-  var z1 = ((+contrast-1)/(2*+brightness*+contrast));
-  var z2 = ((+contrast+1)/(2*+brightness*+contrast));
+function printFull(tmpPath, z1, z2, opts, callback){
+  //var z1 = ((+contrast-1)/(2*+brightness*+contrast));
+  //var z2 = ((+contrast+1)/(2*+brightness*+contrast));
 
   var imParams = [
       '-resize'    , '384x2000',
@@ -55,10 +55,10 @@ function printFull(tmpPath, contrast, brightness, opts, callback){
         convert(originalPath, finalPaths+'-%d.png', imParams, next);
     },
     // print pixels camp logo
-    // function(next){
-    //   printer.printImages([paths.system+'/pixels.png'], opts, next);
-    // },
-    // print image
+    function(next){
+      printer.printImages([paths.system+'/pixels.png'], opts, next);
+    },
+    print image
     function(next){
       glob(finalPaths+'*', {}, function(err, files){
         if(err){ return next(err); }
