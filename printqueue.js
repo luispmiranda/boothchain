@@ -55,9 +55,9 @@ function printFull(tmpPath, contrast, brightness, opts, callback){
         convert(originalPath, finalPaths+'-%d.png', imParams, next);
     },
     // print pixels camp logo
-    function(next){
-      printer.printImages([paths.system+'/pixels.png'], opts, next);
-    },
+    // function(next){
+    //   printer.printImages([paths.system+'/pixels.png'], opts, next);
+    // },
     // print image
     function(next){
       glob(finalPaths+'*', {}, function(err, files){

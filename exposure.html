@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <pre id="current">loading...</pre>
+    </body>
+    <script type="text/javascript">
+
+    var wallet= '0x3De6BdB01e136bD3b2Ac2000a76Fe1FF50D98F17'; // public address to get EXP balance
+
+    var rpc = 'https://moon.pixels.camp:8549';
+    post(rpc,
+        {
+            "jsonrpc":"2.0",
+            "method":"eth_call",
+            "params": [
+                {
+                    "to": '0x0ce335bb2d04595c84e3d444675360f64de386e8', // don't change this
+                    "data": '0x70a08231000000000000000000000000' + wallet.substr(2),
+                },
+            "latest"
+            ],
+            "id": 1
+        }, function(r) {
+            try {
+                out = 'Exposures: ' + parseInt(r.result) + " EXP";
+                document.getElementById("current").innerText = out;
+            } catch(e) {
+                console.log("Invalid address");
+            }
+    });
+
+    function post(url, data, call) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", url, true);
+        xhr.setRequestHeader("Content-type", "application/json");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var json = JSON.parse(xhr.responseText);
+                call(json);
+            }
+        };
+        var data = JSON.stringify(data);
+        xhr.send(data);
+    };
+    </script>
+</html>

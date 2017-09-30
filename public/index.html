@@ -7,60 +7,43 @@
         <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
     </head>
     <body>
-        <div class="wrapper">
+        <div>
             <header>
                 <img class="logo" src="logo-white.png"/>
             </header>
-            <div class="main">
-                <section class="left-container">
-                    <section id="welcome-section">
-                        <div class="welcome-title">Welcome fellow Camper!</div>
-                        <div class="welcome-description">Boothchain is a photo-booth that allows you to print photos on thermal paper and pay for that with EXPOSURE! Exciting, right?</div>
-                    </section>
-                    <section id="step-2">
-                        <div class="headline">
-                            Great! Now, adjust the brightness to your liking and proceed to payment
+                    <div class="a">
+                    <div class="a1">
+                        <div class="b">
+                        <div>02.</div>
+                        <div class="b2">
+                            <div>title - left container</div>
+                            <div class="c">
+                            CONTROLS
+                            </div>
                         </div>
-                    </section>
-                    <div class="preview-container" id="preview-container">
-                        <div class="frame">
-                            <img class="preview" id="img-preview"/>   
-                            <input id="input-contrast" value="0" type="range" min="0" max="10">
                         </div>
-                        <!-- Add Sliders -->
                     </div>
-                </section>
-                <section class="right-container">
-                    <div class="button-container" id="add-photo">
-                        <img src="shape.svg"/>
-                        <div class="button">Add a Photo</div>
+                    <div class="divider">  
                     </div>
-                    <div class="button-container" id="pay-with-exposure" style="display:none">
-                        <img src="group-3.svg"/>
-                        <div class="button">Pay with Exposure</div>
+                    <div class="a2">
+                        <div class="b">
+                        <div>03.</div>
+                        <div class="b2">
+                            <div>title - right container</div>
+                            <div class="btn-pay">pay with exposure button</div>
+                            <div>transaction id input</div>
+                        </div>
+                        </div>    
                     </div>
-
-                    <!-- Multipart form -->
-                    <form id="image-form" class="img-upld" enctype="multipart/form-data" action="/api/print" method="post" >
-                        <input style="display: none" id="img-upld" name="img-upld" type="file" accept="image/*" >
-
-                        <input id="z1" name="z1" type="hidden" value="0" >
-                        <input id="z2" name="z2" type="hidden" value="1">
-                        <!-- <input id="submit" type="submit" value="Print"/> -->
-                    </form>
-                </section>
-            </div>
-            <!-- Buttons -->
-            <!-- <button id="upload">Upload</button> -->
-            <!-- <button id="print" onclick="printImage()">Print</button> -->
-            <footer>
-                <div class="container">
-                    <img class="pixels-logo" src="pixels-white.png"/>
-                    <div class="description">
-                        Project developed for Pixels Camp 2017
                     </div>
-                </div>
-            </footer>
+                    <footer>
+                        <div class="container">
+                                <img class="pixels-logo" src="pixels-white.png"/>
+                                <div class="description">
+                                    Project developed for Pixels Camp 2017
+                                </div>
+                        </div>
+                    </footer>
         </div>
         <script src="https://code.jquery.com/jquery-2.x-git.min.js"></script>
         <script src="scripts.js"></script>
