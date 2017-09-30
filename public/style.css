@@ -1,7 +1,7 @@
 body {
     background-color: #e72b35;
     color: white;
-    margin: 40px;
+    margin: 0px;
 }
 
 
@@ -13,7 +13,8 @@ body {
     display: flex;
     flex-wrap: wrap;
     max-width: 14440px;
-    margin: 40px 0px;
+    padding: 40px;
+    flex: 1;
   }
   
   .left-container, .right-container {
@@ -45,7 +46,11 @@ body {
     margin-top: 10px;
   }
 
-.wrapper {}
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
 .section-00 {}
 .section-01 {}
 
@@ -60,6 +65,7 @@ body {
 footer {
     /*background-color: green;*/
     display: flex;
+    padding: 40px;
 }
 
 footer .container {
@@ -72,6 +78,10 @@ footer .container {
     color: #ffffff;
     margin: 10px;
     
+}
+
+header {
+    padding: 40px;
 }
 
 footer .container .description {
@@ -177,6 +187,28 @@ footer .container .description {
     align-items: center;
     justify-content: center;
     filter: grayscale(100%);
+}
+
+.receipt {
+    display: none;
+    flex: 1;
+}
+
+.receipt-wrapper {
+    display:flex;
+    align-items: center;
+    flex-direction: column;    
+}
+
+.receipt-text {
+    width: 520px;
+    height: 80px;
+    font-family: Futura;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1.67;
+    text-align: center;
+    color: #ffffff;
 }
 
 input[type=range] {

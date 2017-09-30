@@ -21,7 +21,10 @@ boothchain.imgUpload.init = function () {
             processData: false,
             contentType: false
         });
-        event.preventDefault();        
+        event.preventDefault();
+        
+        $('.receipt').show();
+        $('.main').hide();
     });
 
     // Event functions
