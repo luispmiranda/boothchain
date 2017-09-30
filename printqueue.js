@@ -23,9 +23,7 @@ amqp.connect('amqp://127.0.0.1', function(err, conn) {
 
     ch.consume(q, function(msg) {
       var data = JSON.parse(msg.content.toString());
-      
       printFull(data.filepath, data.z1, data.z2, data.opts, console.log);
-
     }, {noAck: true});
   });
 });
@@ -33,6 +31,9 @@ amqp.connect('amqp://127.0.0.1', function(err, conn) {
 function printFull(tmpPath, z1, z2, opts, callback){
   //var z1 = ((+contrast-1)/(2*+brightness*+contrast));
   //var z2 = ((+contrast+1)/(2*+brightness*+contrast));
+
+  var z1 = 0.49;
+  var z2 = 0.61;
 
   var imParams = [
       '-resize'    , '384x2000',
@@ -58,7 +59,7 @@ function printFull(tmpPath, z1, z2, opts, callback){
     function(next){
       printer.printImages([paths.system+'/pixels.png'], opts, next);
     },
-    print image
+    // print image
     function(next){
       glob(finalPaths+'*', {}, function(err, files){
         if(err){ return next(err); }
