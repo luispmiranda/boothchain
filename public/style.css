@@ -36,14 +36,11 @@ body {
   
   .b2 {
     margin-left: 10px;
+    max-width: 500px;
   }
   
   .b2 > div {
-    border: 2px solid black;
-  }
-  
-  .btn-pay {
-    margin: 10px 0;
+    /*border: 2px solid black;*/
   }
   
   .c {
@@ -54,7 +51,7 @@ body {
 
 footer {
     /*background-color: green;*/
-    flex: 0 0 auto; 
+    display: flex;
 }
 
 footer .container {
@@ -65,11 +62,76 @@ footer .container {
     text-align: left;
     color: #ffffff;
     margin: 10px;
-    display: flex;
-    flex-direction: row;
+    
 }
 
 footer .container .description {
     width: 281px;
     padding-left: 25px;
+    flex-direction: row;
 }  
+
+.headline {
+    margin-bottom: 40px;
+    font-family: Futura;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1.67;
+    text-align: left;
+    color: #ffffff;
+}
+
+.number {
+    height: 40px;
+    opacity: 0.8;
+    font-family: Futura;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.67;
+    text-align: left;
+    color: #ffffff;
+}
+
+.tx-id {
+    margin-top: 40px;
+    width: 520px;
+    height: 64px;
+    border-radius: 12px;
+    background-color: #ffffff;
+
+
+    font-family: Futura;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.5;
+    letter-spacing: 2px;
+    text-align: center;
+    color: #212121;
+}
+
+.button-container {
+    width: 520px;
+    height: 136px;
+    border-radius: 12px;
+    background-color: #fccd38;
+    box-shadow: 4px 4px 0 0 #ae282f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-container .button {
+    /*width: 216px;*/
+    margin-left: 10px;
+    height: 40px;
+    font-family: Futura;
+    text-transform: uppercase;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1.67;
+    letter-spacing: 3px;
+    text-align: center;
+    color: #e72b35;
+    letter-spacing: normal;
+    margin: 10px 0;
+}
