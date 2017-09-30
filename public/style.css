@@ -51,7 +51,7 @@ body {
 
 footer {
     /*background-color: green;*/
-    display: flex;
+
 }
 
 footer .container {
@@ -68,7 +68,6 @@ footer .container {
 footer .container .description {
     width: 281px;
     padding-left: 25px;
-    flex-direction: row;
 }  
 
 .headline {
