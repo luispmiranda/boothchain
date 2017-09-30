@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const fs = require('fs');
 const TARGET_IMAGES_PATH = 'uploads';
 
+const request = require('request');
 const CONFIG = require('./lib/config');
 
 const multer = require('multer'); // v1.0.5
@@ -39,8 +40,9 @@ app.post('/api/print', upload.single('img-upld'), function (req, res) {
          **********************/
         const image = {
             filepath: targetPath,
-            contrast: req.body.z1,
-            brightness: req.body.z2
+            z1: req.body.z1,
+            z2: req.body.z2,
+            contrast: 10
         };
 
         var amqp = require('amqplib/callback_api');
@@ -64,6 +66,30 @@ app.post('/api/print', upload.single('img-upld'), function (req, res) {
     res.json({
         response: 'Hello World'
     });
+});
+
+app.get('/api/tx', function (req, res) {
+    
+    //const tx = req.query.tx;
+    const tx = '0x0d8615aad8c09a29a4d3cfd4eca69466221345d67764514153dde5678fc55fe3'
+    const id = 1234;
+    const url = 'https://moon.pixels.camp:8549/';
+    
+    request.post(url, {
+        data: {
+            method: 'eth_getTransactionByHash',
+            params: [tx],
+            id: '123'
+        }
+    }, function (err, resp, body) {
+        if (err) {
+            console.error(err, err);
+        }
+        console.log(body)
+        var result = require('querystring').parse(body)
+        console.log(result);
+        res.json(resp);
+    })
 });
 
 app.listen(3000, function () {
