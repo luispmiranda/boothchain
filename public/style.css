@@ -147,6 +147,12 @@ footer .container .description {
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
+}
+
+.button-container:hover {
+    transition: box-shadow 0.3s ease-in-out 0s; 
+    box-shadow: 8px 8px 0 0 #ae282f;
 }
 
 .button-container .button {
