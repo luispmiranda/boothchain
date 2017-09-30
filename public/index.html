@@ -7,25 +7,50 @@
         <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
     </head>
     <body>
-        <div>
+        <div class="wrapper">
             <header>
                 <img class="logo" src="logo-white.png"/>
             </header>
-            <div class="a">
-                <div class="a1">
-                    <div class="b">
+            <div class="main">
+                <div class="left-container">
+                    <div class="section section-00">
+                        <div class="number"></div>
+                        <div class="section-main">
+                            <div class="headline">Welcome fellow Camper</div>
+                            <div class="text">Bootchain is a photo-booth that allows you to print photos on thermal paper and pay for that with EXPOSURE! Exciting, right?</div>
+                        
+                        </div>
+                    </div>
+                    <div class="section section-02">
                         <div class="number">02.</div>
-                        <div class="b2">
+                        <div class="section-main">
                             <div class="headline">Great! Now, adjust the brightness to your liking and proceed to payment</div>
-                            <div class="c">CONTROLS</div>
+                            <div class="controls">
+                                <div class="preview-container" id="preview-container">
+                                    <div class="frame">
+                                        <img class="preview" id="img-preview"/>   
+                                        <input id="input-contrast" value="0" type="range" min="0" max="10">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="divider"></div>
-                <div class="a2">
-                    <div class="b">
+                <div class="right-container">
+                    <div class="section section-01">
+                        <div class="number">01.</div>
+                        <div class="section-main">
+                            <div class="headline">Take a photo or upload one from your computer</div>
+                            <div class="button-container" id="add-photo">
+                                <img src="shape.svg"/>
+                                <div class="button">Add a photo</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section section-03">
                         <div class="number">03.</div>
-                        <div class="b2">
+                        <div class="section-main">
                             <div class="headline">When you're ready to print, click to "Pay with Exposure" and you'll be redirected to your wallet.</div>
                             <div class="headline">Make sure to copy the Transaction ID and insert it into the input field below.</div>
                             <div class="button-container">
@@ -36,14 +61,22 @@
                         </div>    
                     </div>
                 </div>
+                <!-- Multipart form -->
+                <form id="image-form" class="img-upld" enctype="multipart/form-data" action="/api/print" method="post" >
+                    <input style="display: none" id="img-upld" name="img-upld" type="file" accept="image/*" >
+
+                    <input id="z1" name="z1" type="hidden" value="0" >
+                    <input id="z2" name="z2" type="hidden" value="1">
+                    <!-- <input id="submit" type="submit" value="Print"/> -->
+                </form>
             </div>
-            <div>
+            <footer>
                 <div class="container">
                     <img class="pixels-logo" src="pixels-white.png"/>
                     <div class="description">Project developed for Pixels Camp 2017
                     </div>
                 </div>
-            </div>
+            </footer>
         </div>
         <script src="https://code.jquery.com/jquery-2.x-git.min.js"></script>
         <script src="scripts.js"></script>

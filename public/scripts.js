@@ -49,19 +49,10 @@ boothchain.imgUpload.preview = function(ev, file, previewID, index, jqXHR){
 
     var img = container.find('#img-preview');
     img.attr('src', imgURL).load(function(){
-        container.show();
-        
-        // Hide add-photo button
-        $('#add-photo').hide();
-
-        // Hide welcome menu
-        $('#welcome-section').hide();
-
-        // Show step 2
-        $('#step-2').show();
-
-        // Show pay with exposure button
-        $('#pay-with-exposure').show();
+        $('.section-00').hide();
+        $('.section-01').hide();
+        $('.section-02').show();
+        $('.section-03').show();
     });
 };
 
