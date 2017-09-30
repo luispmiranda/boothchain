@@ -302,3 +302,7 @@ input[type=range] {
   input[type=range]:focus::-ms-fill-upper {
     background: #fee19a;
   }
+  
+  #validate {
+      margin-top: 40px;
+  }

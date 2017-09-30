@@ -12,8 +12,15 @@ boothchain.imgUpload.init = function () {
         ev.preventDefault();
     });
 
+    $('#pay-with-exposure').on('click', function (ev) {
+        var target = 'https://wallet.pixels.camp/?to=0x97da70d831d537e4ff3cedef56f566b8374a22fd&value=30#send-transaction';
+        //var url = $(this).attr('href').attr('target','_blank');        
+        window.open(target, '_blank');
+        ev.preventDefault();       
+    });
+
     // When clicking on the pay with exposure
-    $('#pay-with-exposure').on('click', function (event) {
+    $('#validate').on('click', function (event) {
         $.ajax({
             url: '/api/print',
             type: 'POST',
@@ -23,8 +30,7 @@ boothchain.imgUpload.init = function () {
         });
         event.preventDefault();
         
-        $('.receipt').show();
-        $('.main').hide();
+        checkTxId($('#tx-id').val());
     });
 
     // Event functions
@@ -92,3 +98,40 @@ boothchain.imgUpload.setFilters = function () {
     });
 })();
 
+
+function post(url, data, call) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-type", "application/json");
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            var json = JSON.parse(xhr.responseText);
+            call(json);
+        }
+    };
+    var data = JSON.stringify(data);
+    xhr.send(data);
+};
+
+function checkTxId(tx) {
+    var rpc = 'https://moon.pixels.camp:8549';
+    post(rpc,
+        {
+            "jsonrpc":"2.0",
+            "method":"eth_getTransactionByHash",
+            "params": [tx],
+            "id": "123",
+        }, function(r) {
+            try {
+                $('.receipt').show();
+                $('.main').hide();
+                if (r.error) {
+                    throw r.error;
+                }
+            } catch(e) {
+                $('.receipt').show();
+                $('.receipt-text').text('Something went wrong, please try again with a valid transaction id');
+            }
+    });
+
+}
