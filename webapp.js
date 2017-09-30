@@ -39,8 +39,8 @@ app.post('/api/print', upload.single('img-upld'), function (req, res) {
          **********************/
         const image = {
             filepath: targetPath,
-            contrast: 0.5,
-            brightness: 0.5
+            contrast: req.body.z1,
+            brightness: req.body.z2
         };
 
         var amqp = require('amqplib/callback_api');

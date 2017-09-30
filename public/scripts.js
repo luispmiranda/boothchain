@@ -39,6 +39,7 @@ boothchain.imgUpload.init = function () {
 
     $('#input-contrast').change(function(ev){
         var val = $(this).val();
+        console.log($(this).val());
         boothchain.imgUpload.setFilters(ev);
     });
 }
@@ -58,10 +59,23 @@ boothchain.imgUpload.preview = function(ev, file, previewID, index, jqXHR){
 
 boothchain.imgUpload.setFilters = function () {
     const elem = $(this);
+    // Get value from ranges
     const contrast = $('#input-contrast').val();
-    var c = +contrast-0.2;
+    const brightness = $('#input-brightness').val();
 
-    const filter = 'grayscale(100%) contrast(10) brightness(' + c + ')';
+    // Calculate intermediate values
+    var c = +contrast-0.2;
+    var b = +brightness-0.2;
+
+    // Calculate request values
+    var z1 = ((+c-1)/(2*+b*+c));
+    var z2 = ((+c+1)/(2*+b*+c));
+
+    $('input#z1').val(z1);
+    $('input#z2').val(z2);
+
+    const filter = 'grayscale(100%) brightness('+brightness+') contrast('+contrast+')';
+    
     var img = $('#img-preview');
     img.css('-webkit-filter', filter);
     img.css('filter', filter);

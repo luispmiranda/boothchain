@@ -29,7 +29,8 @@
                                 <div class="preview-container" id="preview-container">
                                     <div class="frame">
                                         <img class="preview" id="img-preview"/>   
-                                        <input id="input-contrast" value="0" type="range" min="0" max="10">
+                                        <input id="input-contrast" value="1" type="range" min="0" max="10" step="0.1">
+                                        <input id="input-brightness" value="1" type="hidden" min="0" max="10" step="0.1">
                                     </div>
                                 </div>
                             </div>
@@ -55,7 +56,7 @@
                             <div class="headline">Make sure to copy the Transaction ID and insert it into the input field below.</div>
                             <div class="button-container">
                                 <img src="group-3.svg"/>
-                                <div class="button">Pay with Exposure</div>
+                                <div class="button" id="pay-with-exposure">Pay with Exposure</div>
                             </div>
                         <input type="text" class="tx-id" placeholder="ENTER YOUR TRANSACTION ID HERE"></input>
                         </div>    
